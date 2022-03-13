@@ -1,0 +1,35 @@
+﻿@{
+
+@model Student
+<table class="table table-sm">
+    <thread>
+        <tr>
+            <th>Issue</th>
+            <th>Created</th>
+            <th>Active</th>
+            <th>Action </th>
+
+        </tr>
+    </thread>
+    <tbody>
+        @foreach(var t in Model.Tickets)
+        {
+            <tr>
+                <td>
+                    @t.Issue
+                </td>
+                <td>
+                    @t.CreatedOn
+                </td>
+                <td>
+                    @t.Active
+                </td>
+                <td>
+                <a asp-controller="Student" asp-action="TicketDelete" asp-route-id=@t.Id>Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+}

@@ -38,7 +38,7 @@ namespace SMS.Data.Services
                      .Include(s => s.Tickets)
                      .Include(s => s.StudentModules)
                      // drill down and include each studentmodule module entity     
-                     .ThenInclude(sm => sm.Module) 
+                     .ThenInclude(sm => sm.Module)
                      .FirstOrDefault(s => s.Id == id);
         }
 
@@ -51,7 +51,7 @@ namespace SMS.Data.Services
             if (exists != null)
             {
                 return null;
-            } 
+            }
 
             // create new student
             var s = new Student
@@ -112,10 +112,26 @@ namespace SMS.Data.Services
         public Ticket CreateTicket(int studentId, string issue)
         {
             // TBC - complete this method
-            return null;
-        }
+            var studentExists = db.Students.FirstOrDefault(s => s.Id == studentId); 
+            if (studentExists == null)
+            {
+                return null;
+            }
 
-        public Ticket GetTicket(int id)
+
+            // create new ticket
+            var t = new Ticket();
+            t.StudentId=studentId;
+            t.Issue=issue;
+      
+
+            db.Tickets.Add(t); // add ticket to the list
+            db.SaveChanges();
+            return t; // return newly added ticket
+        }
+    
+
+public Ticket GetTicket(int id)
         {
             // return ticket and related student or null if not found
             return db.Tickets

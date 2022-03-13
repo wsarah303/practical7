@@ -27,6 +27,14 @@
         <!-- add a form with hidden input storing the ticket id as Id and a   -->
         <!-- second hidden input field containing the student id as StudentId -->
         <!-- the form asp-action should call TicketDeleteConfirm              -->
+
+       <form asp-action="TicketDeleteConfirm" type="post">
+            <input type="hidden" asp-for="Id"/>
+            <input type="hidden" asp-for="StudentId"/>
+            <input type="submit" value="Confirm" class="btn btn-danger" />
+
+            <a class="btn btn-secondary" asp-controller="Student" asp-action="Index" >Cancel</a>
+        </form>
     </div>
     
 </div>

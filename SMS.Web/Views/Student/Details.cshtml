@@ -17,16 +17,17 @@
             <dt class="col-5">Email</dt>
             <dd class="col-7">@Model.Email</dd>
 
-                <dt class="col-5">Classification</dt>
+             <dt class="col-5">Classification</dt>
             <dd class="col-7">@Model.Classification</dd>
         </dl>
+
 
         <div class="mt-4">
             <!-- add navigation link to redirect to Index action -->
             <a asp-controller="Student" asp-action="Index" class="btn btn-sm btn-primary">Students</a>
 
             <!-- TBC - add navigation link to CreateTicket action, passing correct route parameter --> 
-            
+             <a asp-controller="Student" asp-action="TicketCreate" asp-route-id="@Model.Id" class="btn btn-sm btn-primary">Create Ticket</a>
 
             <!-- add navigation link to Details action, passing the correct route id parameter --> 
             <a asp-controller="Student" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-sm btn-secondary">Edit</a>
@@ -42,4 +43,6 @@
 </div>
 
 <!-- TBC Create and Add Tickets Partial View Table -->   
+
+<partial name="_Tickets.cshtml" /> 
 
